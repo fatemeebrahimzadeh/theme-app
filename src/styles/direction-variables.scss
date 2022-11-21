@@ -1,0 +1,35 @@
+$directions: (
+  LTR: (
+    justify-content: flex-start,
+    align-items: flex-start,
+    flex-direction: row,
+  ),
+  RTL: (
+    justify-content: flex-end,
+    align-items: flex-end,
+    flex-direction: row-reverse,
+  ),
+);
+
+@mixin directionify($directions) {
+  @each $direction, $map in $directions {
+    .direction-#{$direction} & {
+      $direction-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($directions, $direction), "#{$key}");
+        $direction-map: map-merge(
+          $direction-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $direction-map: null !global;
+    }
+  }
+}
+
+@function directioned($key) {
+  @return map-get($direction-map, $key);
+}

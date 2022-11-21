@@ -1,17 +1,31 @@
 import { FC, useContext } from 'react';
+import { Direction } from '../App';
+import { DirectionContext } from '../contexts/direction-context';
 import { ThemeContext } from '../contexts/theme-context';
 
 import logoIcon from '../images/logo-icon.png';
 import './styles.scss';
 
 const Header: FC = () => {
+
+  //#region Direction
+
+  const { direction, setDirection } = useContext(DirectionContext)
+
+  //#endregion
+
+  //#region Theme
+
   const { theme, setTheme } = useContext(ThemeContext);
 
   const handleThemeChange = () => {
     const isCurrentDark = theme === 'dark';
     setTheme(isCurrentDark ? 'light' : 'dark');
+    setDirection(isCurrentDark ? Direction.LTR : Direction.RTL)
     localStorage.setItem('default-theme', isCurrentDark ? 'light' : 'dark');
   };
+
+  //#endregion
 
   return (
     <header className="header">

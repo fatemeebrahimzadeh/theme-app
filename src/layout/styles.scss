@@ -1,4 +1,5 @@
-@import '../styles/theme-variables.scss';
+@import "../styles/theme-variables.scss";
+@import "../styles/direction-variables.scss";
 
 /*Header styles*/
 .header {
@@ -7,19 +8,23 @@
   z-index: 99;
   box-shadow: 8px 0 25px rgba(0, 0, 0, 0.05);
   @include themify($themes) {
-    background: themed('headerFooterBackground');
+    background: themed("headerFooterBackground");
   }
   .header-content {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    justify-content: space-between;
+    @include directionify($directions) {
+      flex-direction: directioned("flex-direction");
+    }
     .logo-section {
       height: 50px;
       text-decoration: none;
       display: flex;
       width: 430px;
       @include themify($themes) {
-        color: themed('textColor');
+        color: themed("textColor");
       }
       font-weight: 600;
       text-transform: uppercase;
@@ -34,7 +39,8 @@
       }
     }
     .toggle-btn-section {
-      margin: auto 0 auto auto;
+      display: flex;
+      align-items: center;
       .toggle-checkbox {
         justify-content: center;
         display: inline-flex;
@@ -59,11 +65,11 @@
           margin-top: 2px;
 
           @include themify($themes) {
-            background-color: themed('toggleBackground');
+            background-color: themed("toggleBackground");
           }
 
           &::after {
-            content: '?';
+            content: "?";
             position: absolute;
             top: 3px;
             left: 3px;
@@ -105,7 +111,7 @@
 
 .layout-wrapper {
   @include themify($themes) {
-    background: themed('bodyBackgroundColor');
+    background: themed("bodyBackgroundColor");
   }
 }
 
@@ -113,6 +119,27 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 78px);
+  @include directionify($directions) {
+    align-items: directioned("align-items");
+  }
+  .content-wrapper {
+    @include directionify($directions) {
+      justify-content: directioned("justify-content");
+      align-items: directioned("align-items");
+    }
+    img {
+      max-height: 200px;
+      height: 100%;
+    }
+  }
+}
+
+.test-div {
+  width: 50px;
+  height: 100%;
+  @include themify($themes) {
+    background: themed("headerFooterBackground");
+  }
 }
 
 /*Footer styles*/
@@ -122,8 +149,8 @@
   height: 78px;
   display: flex;
   @include themify($themes) {
-    background: themed('headerFooterBackground');
-    color: themed('textColor');
+    background: themed("headerFooterBackground");
+    color: themed("textColor");
   }
   .footer-content {
     text-align: center;
