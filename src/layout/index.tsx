@@ -1,7 +1,8 @@
 import { FC, ReactNode } from 'react';
 import Header from './header';
 import Footer from './footer';
-import './styles.scss';
+// import './styles-one.scss';
+import './styles-tow.scss';
 
 interface LayoutProps {
   children: ReactNode;

@@ -1,0 +1,10 @@
+$directions: (
+    LTR: "LTR",
+    RTL: "RTL",
+);
+
+@mixin directionify($direction, $property, $value) {
+    .direction-#{$direction} & {
+        #{$property}: $value;
+    }
+}

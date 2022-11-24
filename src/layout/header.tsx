@@ -4,7 +4,9 @@ import { DirectionContext } from '../contexts/direction-context';
 import { ThemeContext } from '../contexts/theme-context';
 
 import logoIcon from '../images/logo-icon.png';
-import './styles.scss';
+// import './styles-one.scss';
+import './styles-tow.scss';
+
 
 const Header: FC = () => {
 

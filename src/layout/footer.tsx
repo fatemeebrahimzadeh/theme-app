@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import './styles.scss';
+// import './styles-one.scss';
+import './styles-tow.scss';
 
 const Footer: FC = () => {
   return (
