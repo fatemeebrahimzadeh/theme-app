@@ -1,10 +1,5 @@
-$directions: (
-    LTR: "LTR",
-    RTL: "RTL",
-);
-
-@mixin directionify($direction, $property, $value) {
+@mixin directionify($direction) {
     .direction-#{$direction} & {
-        #{$property}: $value;
+        @content;
     }
 }

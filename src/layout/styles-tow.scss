@@ -16,22 +16,36 @@ $darkToggleBackground: #606071;
     padding: 30px;
     z-index: 99;
     box-shadow: 8px 0 25px rgba(0, 0, 0, 0.05);
-    @include themify(map-get($themes, "light"), background, $lightHeaderFooterBackground);
-    @include themify(map-get($themes, "dark"), background, $darkHeaderFooterBackground);
+    @include themify('light') {
+        background: $lightHeaderFooterBackground;
+    }
+    @include themify('dark') {
+        background: $darkHeaderFooterBackground;
+    }
     .header-content {
         max-width: 1200px;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
-        @include directionify(map-get($directions, "LTR"), flex-direction, row);
-        @include directionify(map-get($directions, "RTL"), flex-direction, row-reverse);
+        @include directionify('LTR'){
+            flex-direction: row
+        };
+        @include directionify('RTL'){
+            flex-direction: row-reverse
+        };
         .logo-section {
             height: 50px;
             text-decoration: none;
             display: flex;
             width: 430px;
-            @include themify(map-get($themes, "light"), color, $lightTextColor);
-            @include themify(map-get($themes, "dark"), color, $darkTextColor);
+            @include themify('light') {
+                background-color: red;
+                color: $lightTextColor;
+            }
+            @include themify('dark') {
+                background-color: blue;
+                color: $darkTextColor;
+            }
             font-weight: 600;
             text-transform: uppercase;
             img {
@@ -67,8 +81,12 @@ $darkToggleBackground: #606071;
                     position: relative;
                     border: none;
                     margin-top: 2px;
-                    @include themify(map-get($themes, "light"), background-color, $lightToggleBackground);
-                    @include themify(map-get($themes, "dark"), background-color, $darkToggleBackground);
+                    @include themify('light') {
+                        background-color: $lightToggleBackground;
+                    }
+                    @include themify('dark') {
+                        background-color: $darkToggleBackground;
+                    }
                     &::after {
                         content: "?";
                         position: absolute;
@@ -108,21 +126,37 @@ $darkToggleBackground: #606071;
 /*Layout wrapper styles*/
 
 .layout-wrapper {
-    @include themify(map-get($themes, "light"), background, $lightBodyBackgroundColor);
-    @include themify(map-get($themes, "dark"), background, $darkBodyBackgroundColor);
+    @include themify('light') {
+        background: $lightBodyBackgroundColor;
+    }
+    @include themify('dark') {
+        background: $darkBodyBackgroundColor;
+    }
 }
 
 .main-wrapper {
     display: flex;
     flex-direction: column;
     height: calc(100vh - 78px);
-    @include directionify(map-get($directions, "LTR"), align-items, flex-start);
-    @include directionify(map-get($directions, "RTL"), align-items, flex-end);
+    @include directionify('LTR'){
+        align-items: flex-start
+    };
+    @include directionify('RTL'){
+        align-items: flex-end
+    };
     .content-wrapper {
-        @include directionify(map-get($directions, "LTR"), justify-content, flex-start);
-        @include directionify(map-get($directions, "RTL"), justify-content, flex-end);
-        @include directionify(map-get($directions, "LTR"), align-items, flex-start);
-        @include directionify(map-get($directions, "RTL"), align-items, flex-end);
+        @include directionify('LTR'){
+            justify-content: flex-start
+        };
+        @include directionify('RTL'){
+            justify-content: flex-end
+        };
+        @include directionify('LTR'){
+            align-items: flex-start
+        };
+        @include directionify('RTL'){
+            align-items: flex-end
+        };
         img {
             max-height: 200px;
             height: 100%;
@@ -133,8 +167,12 @@ $darkToggleBackground: #606071;
 .test-div {
     width: 50px;
     height: 100%;
-    @include themify(map-get($themes, "light"), background, $lightHeaderFooterBackground);
-    @include themify(map-get($themes, "dark"), background, $darkHeaderFooterBackground);
+    @include themify('light') {
+        background: $lightHeaderFooterBackground;
+    }
+    @include themify('dark') {
+        background: $darkHeaderFooterBackground;
+    }
 }
 
 /*Footer styles*/
@@ -143,10 +181,18 @@ $darkToggleBackground: #606071;
     z-index: 99;
     height: 78px;
     display: flex;
-    @include themify(map-get($themes, "light"), background, $lightHeaderFooterBackground);
-    @include themify(map-get($themes, "dark"), background, $darkHeaderFooterBackground);
-    @include themify(map-get($themes, "light"), color, $lightTextColor);
-    @include themify(map-get($themes, "dark"), color, $darkTextColor);
+    @include themify('light') {
+        background: $lightHeaderFooterBackground;
+    }
+    @include themify('dark') {
+        background: $darkHeaderFooterBackground;
+    }
+    @include themify('light') {
+        color: $lightTextColor;
+    }
+    @include themify('dark') {
+        color: $darkTextColor;
+    }
     .footer-content {
         text-align: center;
         max-width: 1200px;
